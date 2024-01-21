@@ -17,56 +17,57 @@ public class Baraja {
 	
 	
 	public void rellenarBaraja() {
-		
-		
-		baraja = new String[52];
-		for(int i=0;i<baraja.length;i++) {
-			
-			if(i<=12) {
-			
-			baraja[i]=i+("\u2660");
-					
-			
-		}
-		
-			else if(i<=25) {
-				
-				
-			baraja[i]=i+("\u2663");
-			}
-			
-			
-			
-			else if(i<=38) {
-				
-			baraja[i]=i+("\u2665");	
-				
-			}
-			
-			else if(i<=52) {
-				
-			
-			baraja[i]=i+("\u2666");
-			}
-		
-	}
-	
-	
-	
-	
-	
+        baraja = new String[52];
+        for (int i = 0; i < baraja.length; i++) {
+            int numeroCarta = (i % 13) + 1; 
+            char simboloPalo = obtenerSimboloPalo(i / 13);
+
+            
+            String carta = obtenerNombreCarta(numeroCarta) + simboloPalo;
+
+            
+            baraja[i] = carta;
+        }
+    }
+
+    private String obtenerNombreCarta(int numero) {
+        switch (numero) {
+            case 1:
+                return "A";
+            case 11:
+                return "J";
+            case 12:
+                return "Q";
+            case 13:
+                return "K";
+            default:
+                return Integer.toString(numero);
+        }
+    }
+
+    private char obtenerSimboloPalo(int indice) {
+        switch (indice) {
+            case 0:
+                return '\u2660'; 
+            case 1:
+                return '\u2665'; 
+            case 2:
+                return '\u2666'; 
+            case 3:
+                return '\u2663'; 
+            default:
+                return '?'; 
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Baraja [baraja=" + Arrays.toString(baraja) + ", vuelta=" + vuelta + "]";
+    }
 }
+	
+	
+	
+	
+	
 
-
-
-
-	@Override
-	public String toString() {
-		return "Baraja [baraja=" + Arrays.toString(baraja) + ", vuelta=" + vuelta + "]";
-	}
-	
-	
-	
-	
-	
-}
