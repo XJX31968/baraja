@@ -6,11 +6,15 @@ public class Baraja {
 
 	
 	private String[] baraja;
-	private boolean vuelta=true;
+	private boolean vuelta;
 	
 	
 	
-	
+	public Baraja() {
+		
+		 rellenarBaraja();
+		 imprimirCartasDadasVuelta();
+	}
 
 	
 	
@@ -59,11 +63,43 @@ public class Baraja {
                 return '?'; 
         }
     }
-
-    @Override
-    public String toString() {
-        return "Baraja [baraja=" + Arrays.toString(baraja) + ", vuelta=" + vuelta + "]";
+    
+    
+    public boolean vuelta (int i) {
+    	
+    	if (i >= 0 && i < baraja.length) {
+    		
+    		vuelta = !vuelta;
+    		return !vuelta;
+    	}
+    	else {
+            return false;
+        }
+    } 
+    
+    public void imprimirCartasDadasVuelta() {
+        for (int i = 0; i < baraja.length; i++) {
+            if (vuelta) {
+                System.out.println(baraja[i]);
+            }
+        }
     }
+    
+    public String[] getBaraja() {
+    	return baraja;
+    }
+    
+    
+
+	@Override
+	public String toString() {
+		return "Baraja [baraja=" + Arrays.toString(baraja) + ", vuelta=" + vuelta + "]";
+	}
+
+    	
+    
+
+    
 }
 	
 	
